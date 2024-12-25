@@ -1,5 +1,3 @@
-import React from "react";
-
 const Searchbar = ({ country, setCountry }) => {
   return (
     <div>

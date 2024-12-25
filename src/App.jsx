@@ -24,10 +24,11 @@ function App() {
     <div className="bg-lightbg dark:bg-darkbg min-h-screen">
       <NavBar />
       {loading ? (
-        <h1 className='md:text-5xl text-center font-semibold text-lighttext dark:text-darktext mt-5'>Loading..!</h1>
+        <h1 className="md:text-5xl text-center font-semibold text-lighttext dark:text-darktext mt-5">
+          Loading..!
+        </h1>
       ) : (
         <Routes>
-          <Route path="/" element={<Body data={data} />} />
           <Route path="/:country" element={<DetailPage data={data} />} />
         </Routes>
       )}

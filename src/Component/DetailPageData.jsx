@@ -1,4 +1,3 @@
-import React from "react";
 import ParagraphComponent from "./ParagraphComponent";
 const DetailPageData = ({ countryData }) => {
   let languages =

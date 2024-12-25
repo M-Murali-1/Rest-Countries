@@ -12,6 +12,8 @@ function FilteringData(data, country, region, subregion, criteria) {
       }
     });
   }
+  console.log("In the filter ",country,region,subregion,criteria);
+  
   if (region !== "Filter by Region") {
     updated = updated.filter((element) => element.region === region);
   }

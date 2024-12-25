@@ -1,7 +1,7 @@
 import React from 'react'
 import Individual from './Individual'
 const Allcountries = (props) => {
-    console.log("in the allcountries path",props.data[0]);
+    //console.log("in the allcountries path",props.data[0]);
     if(props.data.length===0) {
         return <h1 className='md:text-5xl text-center font-semibold text-lighttext dark:text-darktext'>No country found..!</h1>
     }

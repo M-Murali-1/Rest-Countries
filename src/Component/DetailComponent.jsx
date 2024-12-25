@@ -1,4 +1,3 @@
-import React from "react";
 import BorderCountries from "./BorderCountries";
 import DetailPageImage from "./DetailPageImage";
 import DetailPageData from "./DetailPageData";

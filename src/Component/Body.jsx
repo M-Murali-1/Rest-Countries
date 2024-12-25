@@ -25,26 +25,25 @@ const Body = ({ data }) => {
     "Area High to Low",
     "Area Low to High",
   ];
-  console.log(country, region, subregion);
   let allSubregions = data
     .filter(
       (element) => element.region === region && element.subregion != undefined
     )
     .map((element) => element.subregion);
-  // console.log(allSubregions);
   allSubregions = Array.from(new Set(allSubregions));
   allSubregions.unshift("Filter By Subregion");
-  console.log(allSubregions);
   let updated = FilteringData(data, country, region, subregion, criteria);
-  console.log("Updated value:", updated[0]);
-
+function handleSetRegion(value) {
+  setRegion(value);
+  setSubregion("Filter By Subregion");
+}
   return (
     <div className="m-5">
       <div className="sm:flex sm:justify-between">
       <Searchbar country={country} setCountry={(value) => setCountry(value)} />
       <Selectbar
         options={allRegions}
-        setOptions={(value) => setRegion(value)}
+        setOptions={(value) => handleSetRegion(value)}
       />
       {allSubregions.length > 1 ? (
         <Selectbar

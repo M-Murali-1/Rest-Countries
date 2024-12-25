@@ -1,5 +1,3 @@
-import React from "react";
-
 const Selectbar = ({ options, setOptions }) => {
   return (
     <div className="my-5 sm:mt-0">

@@ -29,6 +29,7 @@ function App() {
         </h1>
       ) : (
         <Routes>
+          <Route path="/" element={<Body data={data} />} />
           <Route path="/:country" element={<DetailPage data={data} />} />
         </Routes>
       )}

@@ -1,4 +1,4 @@
-const Searchbar = ({ country, setCountry }) => {
+const Searchbar = ({ country, setSearchQuery }) => {
   return (
     <div>
       <div className="relative shadow-md  rounded-lg text-lighttext dark:text-darktext ">
@@ -24,7 +24,7 @@ const Searchbar = ({ country, setCountry }) => {
           value={country}
           className="ps-10 p-2.5 border-0 w-full rounded-md text-lighttext dark:text-darktext dark:bg-darkelement"
           placeholder="Search for a country..."
-          onChange={(e) => setCountry(e.target.value)}
+          onChange={(e) => setSearchQuery(e.target.value)}
         />
       </div>
     </div>

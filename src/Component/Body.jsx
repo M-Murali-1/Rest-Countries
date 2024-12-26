@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Searchbar from "./Searchbar";
 import Selectbar from "./Selectbar";
-import FilteringData from "./FilteringData";
+import filteringData from "./FilteringData";
 import Allcountries from "./Allcountries";
 const Body = ({ data }) => {
-  const [country, setCountry] = useState("");
-  //const [data, setData] = useState([]);
-  const [region, setRegion] = useState("Filter by Region");
-  const [subregion, setSubregion] = useState("Filter By Subregion");
-  const [criteria, setCriteria] = useState("Filter by Criteria");
-  const [language,setLanguage]=useState("Filter by Language");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchRegion, setSearchRegion] = useState("Filter by Region");
+  const [searchSubregion, setSearchSubregion] = useState("Filter By Subregion");
+  const [searchCriteria, setSearchCriteria] = useState("Filter by Criteria");
+  const [searchLanguage,setSearchLanguage]=useState("Filter by Language");
   let allRegions = [
     "Filter by Region",
     "Africa",
@@ -28,14 +27,14 @@ const Body = ({ data }) => {
   ];
   let allSubregions = data
     .filter(
-      (element) => element.region === region && element.subregion != undefined
+      (element) => element.region === searchRegion && element.subregion != undefined
     )
     .map((element) => element.subregion);
   allSubregions = Array.from(new Set(allSubregions));
   allSubregions.unshift("Filter By Subregion");
   function handleSetRegion(value) {
-    setRegion(value);
-    setSubregion("Filter By Subregion");
+    setSearchRegion(value);
+    setSearchSubregion("Filter By Subregion");
   }
   let languages = data.map((element)=>{
     if(element.languages!=undefined) {
@@ -43,17 +42,17 @@ const Body = ({ data }) => {
     }
   })
   let allLanguages = Array.from(new Set(languages.flat()));
-  console.log(allLanguages.sort());
+  //console.log(allLanguages.sort());
   allLanguages.unshift("Filter by Language");
-  let updated = FilteringData(data, country, region, subregion, criteria,language);
+  let updated = filteringData(data, searchQuery, searchRegion, searchSubregion, searchCriteria,searchLanguage);
 
   
   return (
     <div className="m-5">
       <div className="sm:flex sm:justify-between">
         <Searchbar
-          country={country}
-          setCountry={(value) => setCountry(value)}
+          country={searchQuery}
+          setSearchQuery={(value) => setSearchQuery(value)}
         />
         <Selectbar
           options={allRegions}
@@ -62,9 +61,9 @@ const Body = ({ data }) => {
         {allSubregions.length > 1 ? (
           <Selectbar
             options={allSubregions}
-            setOptions={(value) => setSubregion(value)}
+            setOptions={(value) => setSearchSubregion(value)}
           />
-        ) : region === "Filter by Region" ? (
+        ) : searchRegion === "Filter by Region" ? (
           <></>
         ) : (
           <p className="text-lighttext dark:text-darktext px-3">
@@ -73,9 +72,9 @@ const Body = ({ data }) => {
         )}
         <Selectbar
           options={allCriteria}
-          setOptions={(value) => setCriteria(value)}
+          setOptions={(value) => setSearchCriteria(value)}
         />
-        <Selectbar options={allLanguages} setOptions={(value)=>setLanguage(value)}/>
+        <Selectbar options={allLanguages} setOptions={(value)=>setSearchLanguage(value)}/>
       </div>
       <Allcountries data={updated} />
     </div>

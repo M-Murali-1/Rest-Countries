@@ -2,6 +2,12 @@ import { useNavigate } from "react-router-dom";
 import ParagraphComponent from "./ParagraphComponent";
 const Individual = ({ country }) => {
   const navigate = useNavigate();
+  let languages =
+    country.languages === undefined
+      ? ["NA"]
+      : Object.values(country.languages);
+      //console.log("Hello");
+      
   return (
     <div
       className="mx-4 bg-lightelement dark:bg-darkelement shadow-xl rounded-lg text-lighttext dark:text-darktext"
@@ -22,6 +28,10 @@ const Individual = ({ country }) => {
         />
         <ParagraphComponent title="Region" content={`${country.region}`} />
         <ParagraphComponent title="Capital" content={`${country.capital}`} />
+        <ParagraphComponent
+          title="Languages:"
+          content={`${languages.join(",")}`}
+        />
       </div>
     </div>
   );

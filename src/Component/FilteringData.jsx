@@ -1,5 +1,7 @@
-function FilteringData(data, country, region, subregion, criteria) {
+function FilteringData(data, country, region, subregion, criteria,language) {
   let updated;
+  // console.log(language);
+  
   if (country === "") {
     updated = data;
   } else {
@@ -12,7 +14,18 @@ function FilteringData(data, country, region, subregion, criteria) {
       }
     });
   }
-  console.log("In the filter ",country,region,subregion,criteria);
+ // console.log("In the filter ",country,region,subregion,criteria,language);
+ if(language!=="Filter by Language") {
+    console.log(language);
+    updated = updated .filter((element)=>{
+      if(element.languages!=undefined) {
+      let presentLanguages = Object.values(element.languages);
+      if(presentLanguages.includes(language)) {
+        return element;
+      }
+    }
+    })
+  }
   
   if (region !== "Filter by Region") {
     updated = updated.filter((element) => element.region === region);

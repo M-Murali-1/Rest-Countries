@@ -1,4 +1,5 @@
 let updated;
+
 function filteringData(
   data,
   searchQuery,
@@ -15,6 +16,7 @@ function filteringData(
   return updated;
 }
 
+//Function for filtering the data based on the name
 function filterByQuery(searchQuery, data) {
   searchQuery = searchQuery.toLowerCase();
   if (searchQuery !== "") {
@@ -29,8 +31,9 @@ function filterByQuery(searchQuery, data) {
   }
 }
 
+//Function for filtering by the language
 function filterByLanguage(searchLanguage) {
-  if (searchLanguage !== "Filter by Language") {
+  if (searchLanguage !== "") {
     updated = updated.filter((element) => {
       if (element.languages != undefined) {
         let presentLanguages = Object.values(element.languages);
@@ -42,20 +45,23 @@ function filterByLanguage(searchLanguage) {
   }
 }
 
+//Function for filtering by the region.
 function filterByRegion(searchRegion) {
-  if (searchRegion !== "Filter by Region") {
+  if (searchRegion !== "") {
     updated = updated.filter((element) => element.region === searchRegion);
   }
 }
 
+//Function for filtering based on the subregion
 function filterBySubregion(searchSubregion) {
-  if (searchSubregion !== "Filter By Subregion") {
+  if (searchSubregion !== "") {
     updated = updated.filter(
       (element) => element.subregion === searchSubregion
     );
   }
 }
 
+//Function for filtering based on the criteria
 function filterByCriteria(searchCriteria) {
   switch (searchCriteria) {
     case "Population High to Low":
@@ -72,6 +78,5 @@ function filterByCriteria(searchCriteria) {
       break;
   }
 }
-console.log("Hello");
 
 export default filteringData;

@@ -27,7 +27,7 @@ const Body = ({ data }) => {
   );
 
   return (
-    <div className="m-5">
+    <div className="m-5 ">
       <div className="sm:flex sm:justify-between">
         <Searchbar
           country={searchQuery}

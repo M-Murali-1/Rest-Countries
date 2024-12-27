@@ -3,9 +3,11 @@ import NavBar from "./Component/NavBar";
 import Body from "./Component/Body";
 import { Routes, Route } from "react-router-dom";
 import DetailPage from "./Component/DetailPage";
+
 function App() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [isError,setIsError] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -16,10 +18,16 @@ function App() {
         console.log(data[0]);
       } catch (err) {
         console.log("error occured..!");
+        setIsError(true);
       }
     };
     fetchData();
   }, []);
+  if(isError) {
+    return (
+      <h1 className="text-center">Error while fetching the data..!</h1>
+    )
+  }
   return (
     <div className="bg-lightbg dark:bg-darkbg min-h-screen w-full overflow-x-hidden">
       <NavBar />

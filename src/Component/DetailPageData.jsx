@@ -14,7 +14,7 @@ const DetailPageData = ({ countryData }) => {
       <div className="flex flex-col sm:me-4 gap-2 sm:w-1/2 w-full">
         <ParagraphComponent
           title="Native Name"
-          content={`${countryData.population.toLocaleString("en-US")}`}
+          content={`${countryData.name.common}`}
         />
         <ParagraphComponent
           title="Population"
